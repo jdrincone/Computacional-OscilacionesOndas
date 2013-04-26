@@ -1,0 +1,56 @@
+\documentclass[10pt]{book}
+\usepackage [spanish] {babel}
+\usepackage [T1]{fontenc}
+\usepackage [utf8]{inputenc}
+\usepackage {graphicx}
+\usepackage{color} 
+\usepackage{anysize} 
+\usepackage[bookmarks=true]{hyperref}
+
+\marginsize{2cm}{1cm}{1cm}{2cm}
+
+
+%MY COMMANDS
+\newcommand{\sub}[1]{\mbox{\scriptsize{#1}}}
+\newcommand{\der}[2]{ \frac{ \partial #1 }{\partial #2} }
+\newcommand{\dtot}[2]{ \frac{ d #1 }{d #2} }
+\newcommand{\pr}[1]{ \left( #1 \right) }
+\newcommand{\cor}[1]{ \left[ #1 \right] }
+\newcommand{\lla}[1]{ \left\{ #1 \right\} }
+\newcommand{\eq}[2]{\begin{equation} \label{eq#1} #2 \end{equation}}
+
+
+\begin{document}
+\title{Suplemento Computacional \\
+\begin{Huge}
+\textbf{Física de Oscilaciones y Ondas}
+\end{Huge}}
+\author{ Sebastian Bustamante Jaramillo\\ \begin{small}
+macsebas33@gmail.com
+\end{small} \\ \vspace{5cm} \\
+\includegraphics[width=3cm]{UdeA_Shield} \\
+Facultad de Ciencias Exactas y Naturales \\ 
+Universidad de Antioquia }
+\date{}
+
+\maketitle
+
+
+\newpage{\pagestyle{empty}\cleardoublepage}  
+
+\tableofcontents
+\newpage{\pagestyle{empty}\cleardoublepage}  
+
+\chapter{Introducción}
+
+\chapter{Instalación}
+
+\chapter{Módulos}
+	\section{data.py}
+	\section{mechanic.py}
+	\section{thermal.py}
+	\section{magnetic.py}
+	\section{numeric.py}
+
+\chapter{Bibliografía}
+\end{document}
