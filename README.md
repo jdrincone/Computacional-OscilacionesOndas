@@ -6,7 +6,7 @@ facultad de Ciencias Exactas y Naturales de la Universidad de Antioquia.
 
 
 1.  [MOTIVACIÓN]
-    (https://github.com/sbustamante/Computacional-OscilacionesOndas#motivacion)
+    (https://github.com/sbustamante/Computacional-OscilacionesOndas#motivacin)
 
 
 MOTIVACIÓN:
