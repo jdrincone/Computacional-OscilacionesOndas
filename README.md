@@ -1,4 +1,6 @@
-Física de Oscilaciones y Ondas: Suplemento Computacional
+Física de Oscilaciones y Ondas: 
+========================================================
+    Suplemento Computacional
 ========================================================
 
 Suplemento computacional del curso de *Física de Oscilaciones y Ondas* (Física 3) de la
