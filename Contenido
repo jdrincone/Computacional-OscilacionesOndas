@@ -1,0 +1,25 @@
+============================================================================
+PRIMERA SESIÓN
+============================================================================
+
+1. Osciladores libres con un grado de libertad
+    1.1. Osciladores armónicos simples
+	1.1.1.	Péndulo simple
+	1.1.2.	El resorte de Hook
+	1.1.3.	Masa en el centro de cuerda sobre plano horizontal
+	1.1.5.	Observaciones generales
+	1.1.6.	Puntos de equilibrio de los osciladores
+	1.1.7.	Conservación de la energía
+    1.2. Osciladores libres amortiguados
+	1.2.1.	Rectificación del  modelo, nuevas equaciones
+
+2. El oscilador simple amortiguado y forzado
+    2.1. Ecuaciones de movimiento
+    2.2. Solución a las ecuaciones de movimiento
+    2.3. Análisis físico de la solución
+	2.3.1. Evolución del estado transitorio al estado de movimiento
+	2.3.2. Resonancia
+	2.3.3. Absorción de potencia, curva de resonancia
+	2.3.4. Factor de calidad de un oscilador forzado
+
+Tomado de: Oscilaciones y Ondas, Alicia Guerrero Mesa.
