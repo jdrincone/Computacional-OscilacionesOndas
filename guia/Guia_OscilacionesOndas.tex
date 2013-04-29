@@ -1,26 +1,10 @@
 \documentclass[12pt]{book}
-\usepackage [spanish] {babel}
-\usepackage [T1]{fontenc}
-\usepackage [utf8]{inputenc}
-\usepackage {graphicx}
-\usepackage{color} 
-\usepackage{anysize} 
-\usepackage[bookmarks=true]{hyperref}
 
-\marginsize{3cm}{2cm}{2cm}{3cm}
-\usepackage{times}
+\include{latex/macros}
 
-
-%MY COMMANDS
-\newcommand{\sub}[1]{\mbox{\scriptsize{#1}}}
-\newcommand{\der}[2]{ \frac{ \partial #1 }{\partial #2} }
-\newcommand{\dtot}[2]{ \frac{ d #1 }{d #2} }
-\newcommand{\pr}[1]{ \left( #1 \right) }
-\newcommand{\cor}[1]{ \left[ #1 \right] }
-\newcommand{\lla}[1]{ \left\{ #1 \right\} }
-\newcommand{\eq}[2]{\begin{equation} \label{eq#1} #2 \end{equation}}
-
-
+%#########################################################################
+%	FRONT PAGE
+%#########################################################################
 \begin{document}
 \title{Suplemento Computacional \\
 \begin{Huge}
@@ -33,32 +17,35 @@ macsebas33@gmail.com
 Facultad de Ciencias Exactas y Naturales \\ 
 Universidad de Antioquia }
 \date{}
-
 \maketitle
+%#########################################################################
 
 
+
+%#########################################################################
+%	TABLE OF CONTENTS
+%#########################################################################
 \newpage{\pagestyle{empty}\cleardoublepage}  
 
 \tableofcontents
 \newpage{\pagestyle{empty}\cleardoublepage}  
-
-\chapter{Introducción}
-
-El principal objetivo del suplemento computacional es la introducción temprana en los 
-cursos de física básica de herramientas computacionales, estas serán de utilidad a los 
-estudiantes en este curso específico y durante el transcurso de sus carreras.
+%#########################################################################
 
 
-La física ha evolucionado hasta un estado actual donde la mayoría de cálculos teóricos 
-necesarios para realizar investigación de frontera requieren de una gran componente 
-computacional. Desde la corroboración entre teoría y experimento, la predicción y control 
-de los resultados de un experimento hecho a posteriori, la recreación de condiciones 
-imposibles de lograr experimentalmente, tales como simulaciones cosmológicas del universo 
-a gran escala o complejos sistemas atómicos. Estos son sólo algunos ejemplos 
-representativos del papel de la computación en la física moderna.
+
+%#########################################################################
+%	INTRODUCTION
+%#########################################################################
+
+\include{chapters/introduction}
+
+%#########################################################################
 
 
-\chapter{Instalación}
+
+
+
+\chapter{Instalación de paquetes}
 
 \chapter{Módulos}
 	\section{data.py}
