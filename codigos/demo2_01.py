@@ -6,6 +6,7 @@
 import numpy as np
 import matplotlib.pylab as plt
 
+#Solucion
 def Theta(t):
     theta = theta0*np.sin( omega0*t + delta )
     return theta
