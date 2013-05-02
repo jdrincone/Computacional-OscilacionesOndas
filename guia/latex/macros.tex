@@ -4,6 +4,9 @@
 \usepackage {graphicx}
 \usepackage{anysize} 
 \usepackage[bookmarks=true]{hyperref}
+\usepackage{bm} 
+\usepackage{natbib}
+\usepackage{color}
 
 \marginsize{4cm}{3cm}{3cm}{4cm}
 \usepackage{times}
@@ -12,13 +15,17 @@
 \setlength\parindent{0pt}
 
 %MY COMMANDS
+\definecolor{gray}{rgb}{0.5,0.5,0.2}
+\newcommand{\colored}[1]{\textcolor{gray}{\bf #1}}
+
+\newcommand{\bds}[1]{\boldsymbol{ #1 }}
 \newcommand{\sub}[1]{\mbox{\scriptsize{#1}}}
 \newcommand{\der}[2]{ \frac{ \partial #1 }{\partial #2} }
 \newcommand{\dtot}[2]{ \frac{ d #1 }{d #2} }
 \newcommand{\pr}[1]{ \left( #1 \right) }
 \newcommand{\cor}[1]{ \left[ #1 \right] }
 \newcommand{\lla}[1]{ \left\{ #1 \right\} }
-\newcommand{\eq}[2]{\begin{equation} \label{eq#1} #2 \end{equation}}
+\newcommand{\eq}[2]{\begin{equation} \label{#1} #2 \end{equation}}
 
 %CODE COMMANDS============================================================
 \newcommand{\python}{\textit{Python} }
