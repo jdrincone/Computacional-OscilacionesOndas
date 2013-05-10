@@ -42,7 +42,7 @@ tiempo = np.arange( 0, 10, 0.01 )
     
 #SOLUCION APROXIMADA
 #Amplitud
-theta0 = 0.17
+theta0 = np.pi/4
 #Fase
 delta = np.pi/2.
 #Grafica
@@ -50,7 +50,7 @@ plt.plot( tiempo, Theta(tiempo), label='solucion aproximada' )
 
 #SOLUCION NUMERICA
 #Angulo inicial
-theta_t0 = 0.17
+theta_t0 = np.pi/4
 #Velocidad angular inicial
 omega_t0 = 0.0
 #Tension inicial
