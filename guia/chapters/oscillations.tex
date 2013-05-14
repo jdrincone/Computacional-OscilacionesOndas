@@ -1212,9 +1212,9 @@ tiene componente $x=1$, mientras que $y = -l_1$, o equivalentemente el
 péndulo comienza del punto de equilibrio. En las dos siguientes líneas
 se establece el tiempo inicial y el salto de tiempo 
 \texttt{pendulo1.dt = 1}. Se debe tener en cuenta que el salto de tiempo
-es un entero y es \texttt{1} y no corresponde al \texttt{dt} dado en el 
-script 1 de esta demostración, esto debido a que el tiempo en este caso es 
-discreto ya que está asociado a la posición de en los arreglos pre-cargados 
+es un número entero y es \texttt{1} y no corresponde al \texttt{dt} dado 
+en el script 1 de esta demostración, esto debido a que el tiempo en este 
+caso es discreto ya que está asociado a la posición en los arreglos pre-cargados 
 y no al tiempo físico. 
 
 
@@ -1245,8 +1245,59 @@ def anim():
 %ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 Función de iteración \texttt{anim}. Esta función itera el sistema completo,
 creando la animación de cada péndulo a partir de la solución numérica 
-pre-cargada. en la primera línea de la función se define el tiempo 
+pre-cargada. En la primera línea de la función se define el tiempo 
 \textit{discreto} actual como \texttt{pendulo1.t = pendulo1.t + pendulo1.dt}
+y corresponde a la posición \texttt{i} en los arreglos de datos. 
+
+
+En la línea siguiente se actualiza la nueva posición del péndulo, para esto
+se accede a la solución del ángulo en el tiempo actual como 
+\texttt{theta1\_t[i]} y se convierte de coordenadas polares a coordenadas
+cartesianas como \texttt{visual.vector( 1, -l1*np.cos(theta1\_t[i]), 
+l1*np.sin(theta1\_t[i]) )}
+
+
+Las últimas dos líneas rotan la posición de la cuerda para que esté acorde
+a la posición del péndulo, para esto se define una nueva variable como
+\texttt{delta\_thetha1 = theta1\_t[i-1] - theta1\_t[i]}. En la última línea
+se rota la cuerda un angulo \texttt{delta\_thetha1} respecto al eje 
+\texttt{[1.,0.,0]}, para esto se usa el método \texttt{rotate} del objeto 
+\texttt{cuerda1}. Como primer argumento se da el ángulo que se desea rotar 
+la cuerda, este debe ser dado en unidades de grados, no de radianes. La 
+razón para restar el ángulo actual del péndulo y el angulo del tiempo anterior 
+en la definición de \texttt{delta\_thetha1} se debe a que la cuerda en el 
+tiempo anterior ya estaba rotada, así el nuevo ángulo no debe ser medido 
+desde el origen sino desde la última posición de la cuerda. El segundo 
+argumento corresponde al eje sobre el cual se desea hacer la rotación, este 
+debe ser perpendicular al plano en el cual se mueve el péndulo y es en 
+este caso \texttt{[1.,0.,0]}.
+
+
+Este procedimiento se repite para cada uno de los péndulos del sistema.
+
+
+%ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+%DEMO 2_03
+\begin{listing}[style=python, numbers = none]
+a = visual.iterate(10, anim)
+visual.show()
+\end{listing}
+%ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+Finalmente se ejecuta la función \texttt{visual.iterate}, esta presenta
+la animación del sistema de forma gráfica. Como primer argumento se da el 
+tiempo en milisegundos que se quiere entre cada iteración del sistema, así
+por ejemplo un valor bajo como \texttt{10} implica un tiempo de $10$ ms 
+entre frame y frame, produciendo una animación más fluida, mientras que un
+valor más alto como \texttt{50} produce una animación en cámara lenta. El 
+segundo argumento es el nombre de la función donde está la evolución de los
+péndulos, en este caso \texttt{anim}.
+
+
+Finalmente se ejecuta la función \texttt{visual.show()} la cual muestra en 
+pantalla todo el resultado obtenido. Note que esta función \texttt{show} 
+pertenece a la librería \texttt{tvtk} de \mayavi y no debe confundirse con
+la función \texttt{show} de \matplotlib la cual representa en pantalla 
+gráficas y no animaciones.
 
 
 \rule{14cm}{0.5mm}
