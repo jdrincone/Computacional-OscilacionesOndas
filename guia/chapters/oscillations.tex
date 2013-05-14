@@ -785,7 +785,7 @@ def dF(Y, t):
     Domega2 = -(g/l2)*np.sin( theta2 ) + \
     f*(g/l2)*( theta1 + theta3 )*np.cos( theta2 )
     #Derivada de la tension pendulo 2
-    Dtension2 = -3*omega2*(-m*g*np.sin( theta2 ) + \
+    Dtension2 = 3*omega2*(-m*g*np.sin( theta2 ) + \
     f*m*g*( theta1 + theta3 )*np.cos( theta2 )) + \
     f*m*g*( omega1 + omega3 )*np.sin( theta2 )
     
@@ -795,7 +795,7 @@ def dF(Y, t):
     Domega3 = -(g/l3)*np.sin( theta3 ) + \
     f*(g/l3)*( theta2 + theta4 )*np.cos( theta3 )
     #Derivada de la tension pendulo 3
-    Dtension3 = -3*omega3*(-m*g*np.sin( theta3 ) + \
+    Dtension3 = 3*omega3*(-m*g*np.sin( theta3 ) + \
     f*m*g*( theta2 + theta4 )*np.cos( theta3 )) + \
     f*m*g*( omega2 + omega4 )*np.sin( theta3 )
     
@@ -805,7 +805,7 @@ def dF(Y, t):
     Domega4 = -(g/l4)*np.sin( theta4 ) + \
     f*(g/l4)*( theta3 )*np.cos( theta4 )
     #Derivada de la tension pendulo 4
-    Dtension4 = -3*omega4*(-m*g*np.sin( theta4 ) + \
+    Dtension4 = 3*omega4*(-m*g*np.sin( theta4 ) + \
     f*m*g*( theta3 )*np.cos( theta4 )) + \
     f*m*g*( omega3 )*np.sin( theta4 )
     
@@ -1000,6 +1000,7 @@ plt.legend()
 plt.show()
 \end{listing}
 %ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+\newpage
 En esta última parte se usan funciones de \matplotlib para dar formato a 
 las gráficas. En primer lugar se asigna un título con la función 
 \texttt{title}, luego se asignan etiquetas en cada eje con las funciones 
@@ -1014,7 +1015,238 @@ cada curva con \texttt{legend} y se muestra el resultado en pantalla con
 
 Como segunda parte de esta demostración se usaran los datos integrados 
 y almacenados en el archivo \texttt{amplitudes.txt} para representar una 
-animación 3D del sistema.
+animación 3D del sistema. El script en \python para realizar esto es el 
+siguiente
+
+
+%ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+%DEMO 2_03_2
+\begin{listing}[style=python]
+#!/usr/bin/env python
+#==========================================================
+# DEMOSTRACION 3: Parte 2
+# Animacion grafica de 4 pendulos acoplados
+#==========================================================
+import numpy as np
+import enthought.tvtk.tools.visual as visual
+
+#Cargando datos de los pendulos
+tiempo, theta1_t, theta2_t, theta3_t, theta4_t = \
+np.transpose( np.loadtxt('amplitudes.txt') )
+
+#Gravedad
+g = 9.8
+#Longitud pendulo 1
+l1 = 1.0
+#Longitud pendulo 2
+l2 = 2.0
+#Longitud pendulo 3
+l3 = 3.0
+#Longitud pendulo 4
+l4 = 2.0
+#Radio de cada esfera
+radio = 0.2
+
+#Creando pendulo 1
+pendulo1 = visual.sphere( radius=radio, \
+color=(0.0, 0.0, 1.0) )
+pendulo1.pos = [ 1, -l1, 0 ]
+pendulo1.t = 0
+pendulo1.dt = 1
+cuerda1 = visual.curve( points=[(1,0,0), (1,-l1,0)], \
+radius=0.02 )
+
+#Creando pendulo 2
+pendulo2 = visual.sphere( radius=radio, \
+color=(0.0, 0.0, 1.0) )
+pendulo2.pos = [ 2, -l2, 0 ]
+pendulo2.t = 0
+pendulo2.dt = 1
+cuerda2 = visual.curve( points=[(2,0,0), (2,-l2,0)], \
+radius=0.02 )
+
+#Creando pendulo 3
+pendulo3 = visual.sphere( radius=radio, \
+color=(0.0, 0.0, 1.0) )
+pendulo3.pos = [ 3, -l3, 0 ]
+pendulo3.t = 0
+pendulo3.dt = 1
+cuerda3 = visual.curve( points=[(3,0,0), (3,-l3,0)], \
+radius=0.02 )
+
+#Creando pendulo 4
+pendulo4 = visual.sphere( radius=radio, \
+color=(1.0, 0.0, 0.0) )
+pendulo4.pos = [4, -l4*np.cos(theta4_t[0]), \
+l4*np.sin(theta4_t[0])]
+pendulo4.t = 0
+pendulo4.dt = 1
+cuerda4 = visual.curve( points=[(4,0,0), \
+(4, -l4*np.cos(theta4_t[0]), l4*np.sin(theta4_t[0]))], \
+radius=0.02 )
+
+#Creando caja contenedora y cuerda de suspension
+muro1 = visual.box( pos=(0., -1., 0.), size=(0.3, 5, 1), \
+color=(0.6, 0.3, 0.0) )
+muro2 = visual.box( pos=(5., -1., 0.), size=(0.3, 5, 1), \
+color=(0.6, 0.3, 0.0) )
+visual.curve( points=[(0,0,0), (5,0,0)], radius=0.02 )
+
+#ITERACION DEL SISTEMA
+def anim(): 
+    #Evolucion del pendulo 1
+    pendulo1.t = pendulo1.t + pendulo1.dt
+    i = pendulo1.t
+    pendulo1.pos = visual.vector( 1, \
+    -l1*np.cos(theta1_t[i]), l1*np.sin(theta1_t[i]) )
+    delta_thetha1 = theta1_t[i-1] - theta1_t[i]
+    cuerda1.rotate( 180*delta_thetha1/np.pi, [1.,0.,0] )
+    
+    #Evolucion del pendulo 2
+    pendulo2.t = pendulo2.t + pendulo2.dt
+    i = pendulo2.t
+    pendulo2.pos = visual.vector( 2, \
+    -l2*np.cos(theta2_t[i]), l2*np.sin(theta2_t[i]) )
+    delta_thetha2 = theta2_t[i-1] - theta2_t[i]
+    cuerda2.rotate( 180*delta_thetha2/np.pi, [1.,0.,0] )
+    
+    #Evolucion del pendulo 3
+    pendulo3.t = pendulo3.t + pendulo3.dt
+    i = pendulo3.t
+    pendulo3.pos = visual.vector( 3, \
+    -l3*np.cos(theta3_t[i]), l3*np.sin(theta3_t[i]) )
+    delta_thetha3 = theta3_t[i-1] - theta3_t[i]
+    cuerda3.rotate( 180*delta_thetha3/np.pi, [1.,0.,0] )
+    
+    #Evolucion del pendulo 4
+    pendulo4.t = pendulo4.t + pendulo4.dt
+    i = pendulo4.t
+    pendulo4.pos = visual.vector( 4, \
+    -l4*np.cos(theta4_t[i]), l4*np.sin(theta4_t[i]) )
+    delta_thetha4 = theta4_t[i-1] - theta4_t[i]
+    cuerda4.rotate( 180*delta_thetha4/np.pi, [1.,0.,0] )
+    
+a = visual.iterate(10, anim)
+visual.show()
+\end{listing}
+%ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+	
+\
+
+De esto se obtiene una animación 3D del sistema de péndulos, tal como la 
+figura \ref{fig:acopled_pendulum_3D}
+
+\newpage
+%.........................................................................
+%Acopled Pendulum 3D
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.60\textwidth]
+	{./pictures/acopled_pendulum_3D.png}
+
+	\caption{\small{Animación 3D del sistema de péndulos acoplados.}}
+	
+	\label{fig:acopled_pendulum_3D}
+\end{figure}
+%.........................................................................
+
+
+A continuación se explica el código anterior
+
+
+%ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+%DEMO 2_03
+\begin{listing}[style=python, numbers = none]
+import enthought.tvtk.tools.visual as visual
+\end{listing}
+%ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+En esta línea se importa la librería \texttt{tvtk} de \mayavi, esta 
+contiene todas las funcionalidades para realizar la animación 3D. Se usa el
+alias de \texttt{visual}.
+
+
+%ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+%DEMO 2_03
+\begin{listing}[style=python, numbers = none]
+#Cargando datos de los pendulos
+tiempo, theta1_t, theta2_t, theta3_t, theta4_t = \
+np.transpose( np.loadtxt('amplitudes.txt') )
+\end{listing}
+%ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+En esta parte se cargan los arreglos de tiempo y soluciones de los 4 
+péndulos. Para esto se usa la función \texttt{loadtxt} de la librería 
+\numpy. Como único argumento de esta función se da el nombre del archivo
+de datos (\texttt{amplitudes.txt}) generados por el script 1 de esta 
+demostración. Para cargar los datos acorde a las columnas del archivo 
+externo y no a sus filas se debe usar la función \texttt{transpose}.
+
+
+%ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+%DEMO 2_03
+\begin{listing}[style=python, numbers = none]
+#Creando pendulo 1
+pendulo1 = visual.sphere( radius=radio, \
+color=(0.0, 0.0, 1.0) )
+pendulo1.pos = [ 1, -l1, 0 ]
+pendulo1.t = 0
+pendulo1.dt = 1
+cuerda1 = visual.curve( points=[(1,0,0), (1,-l1,0)], \
+radius=0.02 )
+\end{listing}
+%ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+Se definen las propiedades de los objetos gráficos asociados al péndulo 1.
+Primero se define un objeto tipo \texttt{sphere} de la librería 
+\texttt{visual}, como argumentos se dan el radio de la esfera \texttt{radius}
+y el color de esta \texttt{color}. El formato de color está en código RGB
+donde un color es un arreglo de tres números que toman valores entre 
+0 y 1. La primera componente determina la cantidad de rojo, con 0 nulo y 1
+máximo, de igual forma la segunda componente para el verde y la tercera para
+el azul. Como ejemplos, el rojo equivale a \texttt{(1,0,0)}, mientras que
+el negro \texttt{(0,0,0)}, el blanco \texttt{(1,1,1)}, el violeta 
+\texttt{(1,0,1)}, etc. 
+
+
+Luego se define la posición inicial del péndulo como
+\texttt{pendulo1.pos = [ 1, -l1, 0 ]}, lo que significa que el péndulo 
+tiene componente $x=1$, mientras que $y = -l_1$, o equivalentemente el 
+péndulo comienza del punto de equilibrio. En las dos siguientes líneas
+se establece el tiempo inicial y el salto de tiempo 
+\texttt{pendulo1.dt = 1}. Se debe tener en cuenta que el salto de tiempo
+es un entero y es \texttt{1} y no corresponde al \texttt{dt} dado en el 
+script 1 de esta demostración, esto debido a que el tiempo en este caso es 
+discreto ya que está asociado a la posición de en los arreglos pre-cargados 
+y no al tiempo físico. 
+
+
+Finalmente se define el objeto \texttt{cuerda1} como una curva tipo 
+\texttt{curve}, esta tiene como argumentos la posición de los dos extremos 
+de la cuerda \texttt{points}, correspondientes a la base del péndulo y al 
+centro de la esfera, y también el radio de la cuerda \texttt{radius}. Como
+argumento opcional puede definirse un color, pero en este caso se deja el 
+valor por defecto correspondiente a blanco.
+
+
+Esto se repite para los 4 péndulos del sistema.
+
+
+%ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+%DEMO 2_03
+\begin{listing}[style=python, numbers = none]
+#ITERACION DEL SISTEMA
+def anim(): 
+    #Evolucion del pendulo 1
+    pendulo1.t = pendulo1.t + pendulo1.dt
+    i = pendulo1.t
+    pendulo1.pos = visual.vector( 1, \
+    -l1*np.cos(theta1_t[i]), l1*np.sin(theta1_t[i]) )
+    delta_thetha1 = theta1_t[i-1] - theta1_t[i]
+    cuerda1.rotate( 180*delta_thetha1/np.pi, [1.,0.,0] )
+\end{listing}
+%ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+Función de iteración \texttt{anim}. Esta función itera el sistema completo,
+creando la animación de cada péndulo a partir de la solución numérica 
+pre-cargada. en la primera línea de la función se define el tiempo 
+\textit{discreto} actual como \texttt{pendulo1.t = pendulo1.t + pendulo1.dt}
 
 
 \rule{14cm}{0.5mm}

@@ -44,7 +44,7 @@ def dF(Y, t):
     Domega1 = -(g/l1)*np.sin( theta1 ) + \
     f*(g/l1)*( theta2 )*np.cos( theta1 )
     #Derivada de la tension pendulo 1
-    Dtension1 = -3*omega1*(-m*g*np.sin( theta1 ) + \
+    Dtension1 = 3*omega1*(-m*g*np.sin( theta1 ) + \
     f*m*g*( theta2 )*np.cos( theta1 )) + \
     f*m*g*( omega2 )*np.sin( theta1 )
     
@@ -54,7 +54,7 @@ def dF(Y, t):
     Domega2 = -(g/l2)*np.sin( theta2 ) + \
     f*(g/l2)*( theta1 + theta3 )*np.cos( theta2 )
     #Derivada de la tension pendulo 2
-    Dtension2 = -3*omega2*(-m*g*np.sin( theta2 ) + \
+    Dtension2 = 3*omega2*(-m*g*np.sin( theta2 ) + \
     f*m*g*( theta1 + theta3 )*np.cos( theta2 )) + \
     f*m*g*( omega1 + omega3 )*np.sin( theta2 )
     
@@ -64,7 +64,7 @@ def dF(Y, t):
     Domega3 = -(g/l3)*np.sin( theta3 ) + \
     f*(g/l3)*( theta2 + theta4 )*np.cos( theta3 )
     #Derivada de la tension pendulo 3
-    Dtension3 = -3*omega3*(-m*g*np.sin( theta3 ) + \
+    Dtension3 = 3*omega3*(-m*g*np.sin( theta3 ) + \
     f*m*g*( theta2 + theta4 )*np.cos( theta3 )) + \
     f*m*g*( omega2 + omega4 )*np.sin( theta3 )
     
@@ -96,7 +96,7 @@ l3 = 3.0
 #Longitud pendulo 4
 l4 = 2.0
 #Factor de acoplamiento 
-f = 0.1
+f = 0.10
 #Tiempos
 tiempo = np.arange( 0, 200, 0.1 )
     

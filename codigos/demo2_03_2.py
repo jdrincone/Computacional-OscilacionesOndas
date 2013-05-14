@@ -27,10 +27,8 @@ radio = 0.2
 pendulo1 = visual.sphere( radius=radio, \
 color=(0.0, 0.0, 1.0) )
 pendulo1.pos = [ 1, -l1, 0 ]
-
 pendulo1.t = 0
 pendulo1.dt = 1
-
 cuerda1 = visual.curve( points=[(1,0,0), (1,-l1,0)], \
 radius=0.02 )
 
@@ -38,10 +36,8 @@ radius=0.02 )
 pendulo2 = visual.sphere( radius=radio, \
 color=(0.0, 0.0, 1.0) )
 pendulo2.pos = [ 2, -l2, 0 ]
-
 pendulo2.t = 0
 pendulo2.dt = 1
-
 cuerda2 = visual.curve( points=[(2,0,0), (2,-l2,0)], \
 radius=0.02 )
 
@@ -49,10 +45,8 @@ radius=0.02 )
 pendulo3 = visual.sphere( radius=radio, \
 color=(0.0, 0.0, 1.0) )
 pendulo3.pos = [ 3, -l3, 0 ]
-
 pendulo3.t = 0
 pendulo3.dt = 1
-
 cuerda3 = visual.curve( points=[(3,0,0), (3,-l3,0)], \
 radius=0.02 )
 
@@ -61,10 +55,8 @@ pendulo4 = visual.sphere( radius=radio, \
 color=(1.0, 0.0, 0.0) )
 pendulo4.pos = [4, -l4*np.cos(theta4_t[0]), \
 l4*np.sin(theta4_t[0])]
-
 pendulo4.t = 0
 pendulo4.dt = 1
-
 cuerda4 = visual.curve( points=[(4,0,0), \
 (4, -l4*np.cos(theta4_t[0]), l4*np.sin(theta4_t[0]))], \
 radius=0.02 )
@@ -110,5 +102,5 @@ def anim():
     delta_thetha4 = theta4_t[i-1] - theta4_t[i]
     cuerda4.rotate( 180*delta_thetha4/np.pi, [1.,0.,0] )
     
-a = visual.iterate(20, anim)
+a = visual.iterate(10, anim)
 visual.show()
