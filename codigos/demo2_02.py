@@ -26,7 +26,7 @@ def dF(Y, t):
     #Derivada de omega
     Domega = -g*np.sin( theta )/l
     #Derivada de la tension
-    Dtension = -3*omega**m*g*np.sin( theta )
+    Dtension = -3*omega*m*g*np.sin( theta )
     return (Dtheta, Domega, Dtension)
     
 #Gravedad
