@@ -1333,19 +1333,151 @@ gráficas y no animaciones.
 
 \subsection*{Ejercicio 1 \large{$\pr{\star}$}}
 
-\textbf{Comparación de soluciones del sistema masa-resorte}
+\textbf{Soluciones del sistema masa-resorte}
+
+Considere el sistema masa resorte que se ilustra en la figura 
+\ref{fig:mass_spring} y considere las siguientes situaciones
+
+%.........................................................................
+%Situations of mass-spring system
+\begin{itemize}
+\item Sistema masa-resorte ideal, la fricción es despreciable con la 
+superficie horizontal.
+\item Sistema masa-resorte amortiguado, la fricción con la superficie es
+significativa y el coeficiente de fricción está dado por $\mu$.
+\item Sistema masa-resorte forzado, la fricción es de nuevo despreciable 
+pero e\-xiste un agente forzante externo con una forma $\bds F_{ext} = 
+\bds{F_0} \sin (\omega_f t)$.
+\end{itemize}
+%.........................................................................
+
+%.........................................................................
+%Mass-Spring system
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.60\textwidth]
+	{./pictures/mass_spring.png}
+
+	\caption{\small{Sistema masa resorte.}}
+	
+	\label{fig:mass_spring}
+\end{figure}
+%.........................................................................
 
 
+A partir de las situaciones descritas, realizar los siguientes numerales
+
+
+%.........................................................................
+%Numerals
+\begin{itemize}
+\item[\textbf{a)}] Solucionar analíticamente el sistema péndulo-resorte 
+para las tres situaciones y realizar un código que grafique las tres 
+soluciones, usando la misma condición inicial, en una misma ventana. 
+Tanto las condiciones iniciales como los parámetros del sistema ($m$, $k$, 
+$\mu$, etc.) son de libre elección, además puede escoger el rango de tiempo
+en el cual quiere presentar las soluciones.
+
+Realice este mismo numeral para otro conjunto de condiciones iniciales,
+en este caso realice una copia del código con las nuevas condiciones.
+
+\item[\textbf{b)}] Graficar en una misma ventana el comportamiento de la 
+energía en cada una de las tres situaciones, para esto use el mismo conjunto
+de condiciones iniciales del numeral pasado.
+
+Realice este mismo numeral para el segundo conjunto de condiciones 
+iniciales, en este caso realice una copia del código con las nuevas 
+condiciones.
+
+\end{itemize}
+%.........................................................................
 
 
 \subsection*{Ejercicio 2 \large{$\pr{\star}$}}
 
+\textbf{Solución numérica del péndulo-resorte}
+
+El sistema péndulo resorte consiste en una masa atada a un resorte y a su 
+vez este pende de un punto fijo, tal como es mostrado en la figura 
+\ref{fig:pendulum_spring}.
+
+
+%.........................................................................
+%Pendulum-Spring system
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.60\textwidth]
+	{./pictures/pendulum_spring.png}
+
+	\caption{\small{Sistema péndulo resorte.}}
+	
+	\label{fig:pendulum_spring}
+\end{figure}
+%.........................................................................
+
+Plantee las ecuaciones de movimiento de este sistema en coordenadas polares y 
+llegue a un sistema de ecuaciones diferenciales lineales. Sin usar la 
+aproximación de pequeñas oscilaciones, haga un código que resuelva 
+numéricamente este problema para un conjunto de condiciones iniciales de su 
+preferencia. Finalmente grafique la solución, en una ventana muestre la solución
+angular vs tiempo y en otra muestre la solución radial vs tiempo. Guarde en
+un archivo externo \textit{.txt} los datos obtenidos con el formato 
+\textit{[tiempo, solución radial, solución angular]}.
+Escoja los valores numéricos de los parámetros del sistema que usted desee.
+
+\
+
+\textbf{BONUS \large{$\pr{\star}$}}
+
+Este ejercicio puede ser considerado de dos estrellas si se realiza lo siguiente.
+Haga otro código que cargue el archivo de datos de la solución obtenida del 
+péndulo resorte y haga una animación 3D en \mayavi que ilustre la evolución del 
+sistema.
+
+\newpage
 \subsection*{Ejercicio 3 \large{$\pr{\star}$}}
 
-\subsection*{Ejercicio 4 \large{$\pr{\star}$}}
+\textbf{Solución numérica de péndulos acoplados.}
+
+El sistema de dos péndulos acoplados por un resorte es ilustrado en la figura
+siguiente \ref{fig:spring_acopled_pendulums}.
+
+
+%.........................................................................
+%Pendulum-Spring system
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.60\textwidth]
+	{./pictures/acopled_pendulum_spring.png}
+
+	\caption{\small{Sistema péndulo resorte.}}
+	
+	\label{fig:spring_acopled_pendulums}
+\end{figure}
+%.........................................................................
+
+Plantee las ecuaciones de movimiento de este sistema y llegue a un sistema 
+de ecuaciones diferenciales lineales. Sin usar la aproximación de pequeñas 
+oscilaciones, haga un código que resuelva numéricamente este problema para 
+un conjunto de condiciones iniciales de su preferencia. Finalmente grafique 
+la solución de los dos péndulos en una misma ventana, observa resonancia?
+Guarde en un archivo externo \textit{.txt} los datos obtenidos con el formato 
+\textit{[tiempo, solución péndulo 1, solución péndulo 2]}.
+Escoja los valores numéricos de los parámetros del sistema que usted desee.
+
+\
+
+\textbf{BONUS \large{$\pr{\star}$}}
+
+Este ejercicio puede ser considerado de dos estrellas si se realiza lo siguiente.
+Haga otro código que cargue el archivo de datos de la solución obtenida del 
+sistema de péndulos acoplados por resorte y haga una animación 3D en \mayavi que 
+ilustre la evolución del sistema.
+
+
+\subsection*{Ejercicio 4 \large{$\pr{\star \star}$}}
 
 \subsection*{Ejercicio 5 \large{$\pr{\star \star}$}}
 
-\subsection*{Ejercicio 6 \large{$\pr{\star \star}$}}
-
 %*************************************************************************
+
