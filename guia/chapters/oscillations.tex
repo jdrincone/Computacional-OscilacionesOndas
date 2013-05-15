@@ -1232,6 +1232,28 @@ Esto se repite para los 4 péndulos del sistema.
 %ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 %DEMO 2_03
 \begin{listing}[style=python, numbers = none]
+#Creando caja contenedora y cuerda de suspension
+muro1 = visual.box( pos=(0., -1., 0.), size=(0.3, 5, 1), \
+color=(0.6, 0.3, 0.0) )
+muro2 = visual.box( pos=(5., -1., 0.), size=(0.3, 5, 1), \
+color=(0.6, 0.3, 0.0) )
+visual.curve( points=[(0,0,0), (5,0,0)], radius=0.02 )
+\end{listing}
+%ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+Se crean los objetos asociados al soporte de los péndulos. Para el muro 1
+se crean un objeto tipo \texttt{visual.box} de la siguiente forma 
+\texttt{muro1 = visual.box( pos=(0., -1., 0.), size=(0.3, 5, 1), 
+color=(0.6, 0.3, 0.0) )}. Como primer argumento se da la posición del entro
+geométrico de la caja, el segundo argumento es un arreglo con el grosor, 
+el alto y el ancho de la caja, en el mismo orden. Finalmente se da el color
+en formato RGB, con \texttt{(0.6, 0.3, 0.0)} equivalente al color café.
+Por último se crea la cuerda que sostiene los péndulos, se da las dos 
+posiciones asociadas a los extremos y el radio de la cuerda.
+
+
+%ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+%DEMO 2_03
+\begin{listing}[style=python, numbers = none]
 #ITERACION DEL SISTEMA
 def anim(): 
     #Evolucion del pendulo 1
@@ -1299,6 +1321,31 @@ pertenece a la librería \texttt{tvtk} de \mayavi y no debe confundirse con
 la función \texttt{show} de \matplotlib la cual representa en pantalla 
 gráficas y no animaciones.
 
-
 \rule{14cm}{0.5mm}
+%*************************************************************************
+
+
+
+\newpage
+%*************************************************************************
+\section{Ejercicios}
+\label{sec:ejercicios}
+
+\subsection*{Ejercicio 1 \large{$\pr{\star}$}}
+
+\textbf{Comparación de soluciones del sistema masa-resorte}
+
+
+
+
+\subsection*{Ejercicio 2 \large{$\pr{\star}$}}
+
+\subsection*{Ejercicio 3 \large{$\pr{\star}$}}
+
+\subsection*{Ejercicio 4 \large{$\pr{\star}$}}
+
+\subsection*{Ejercicio 5 \large{$\pr{\star \star}$}}
+
+\subsection*{Ejercicio 6 \large{$\pr{\star \star}$}}
+
 %*************************************************************************
