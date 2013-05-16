@@ -1415,15 +1415,15 @@ vez este pende de un punto fijo, tal como es mostrado en la figura
 \end{figure}
 %.........................................................................
 
-Plantee las ecuaciones de movimiento de este sistema en coordenadas polares y 
-llegue a un sistema de ecuaciones diferenciales lineales. Sin usar la 
+Plantee las ecuaciones de movimiento de este sistema en coordenadas polares
+y llegue a un sistema de ecuaciones diferenciales lineales. Sin usar la 
 aproximación de pequeñas oscilaciones, haga un código que resuelva 
 numéricamente este problema para un conjunto de condiciones iniciales de su 
-preferencia. Finalmente grafique la solución, en una ventana muestre la solución
-angular vs tiempo y en otra muestre la solución radial vs tiempo. Guarde en
-un archivo externo \textit{.txt} los datos obtenidos con el formato 
-\textit{[tiempo, solución radial, solución angular]}.
-Escoja los valores numéricos de los parámetros del sistema que usted desee.
+preferencia. Finalmente grafique la solución, en una ventana muestre la 
+solución angular vs tiempo y en otra muestre la solución radial vs tiempo. 
+Guarde en un archivo externo \textit{.txt} los datos obtenidos con el 
+formato \textit{[tiempo, solución radial, solución angular]}. Escoja los 
+valores numéricos de los parámetros del sistema que usted desee.
 
 \
 
@@ -1456,6 +1456,7 @@ siguiente \ref{fig:spring_acopled_pendulums}.
 \end{figure}
 %.........................................................................
 
+
 Plantee las ecuaciones de movimiento de este sistema y llegue a un sistema 
 de ecuaciones diferenciales lineales. Sin usar la aproximación de pequeñas 
 oscilaciones, haga un código que resuelva numéricamente este problema para 
@@ -1469,15 +1470,98 @@ Escoja los valores numéricos de los parámetros del sistema que usted desee.
 
 \textbf{BONUS \large{$\pr{\star}$}}
 
-Este ejercicio puede ser considerado de dos estrellas si se realiza lo siguiente.
-Haga otro código que cargue el archivo de datos de la solución obtenida del 
-sistema de péndulos acoplados por resorte y haga una animación 3D en \mayavi que 
-ilustre la evolución del sistema.
+Este ejercicio puede ser considerado de dos estrellas si se realiza lo 
+siguiente. Haga otro código que cargue el archivo de datos de la solución 
+obtenida del sistema de péndulos acoplados por resorte y haga una animación 
+3D en \mayavi que ilustre la evolución del sistema.
+
+\newpage
+\subsection*{Ejercicio 4 \large{$\pr{\star}$}}
+
+\textbf{Figuras de Lissajous}
+
+Las figuras de Lissajous son un conjunto de curvas que se forman cuando se
+superponen dos movimientos armónicos en direcciones ortogonales. Una forma
+conveniente de recrear esto es a partir de un sistema de una masa y dos 
+resortes ortogonales atados a móviles, tal como se ilustra en la figura
+\ref{fig:two_springs}
 
 
-\subsection*{Ejercicio 4 \large{$\pr{\star \star}$}}
+%.........................................................................
+%Pendulum-Spring system
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.50\textwidth]
+	{./pictures/Lissajous.png}
 
+	\caption{\small{Sistema de masa y dos resortes ortogonales.}}
+	
+	\label{fig:two_springs}
+\end{figure}
+%.........................................................................
+
+
+Para este ejercicio, plantee las ecuaciones de movimiento y resuelva de 
+forma analítica el problema. Tenga en cuenta que el sistema es ideal y no
+presenta forzamiento. Una vez solucionadas las ecuaciones, grafique en una 
+misma ventana 4 diferentes soluciones variando las constantes de los 
+resortes y las condiciones iniciales, en especial intente encontrar 
+constantes $k$ y $k'$ tal que se produzcan algunas de las figuras de 
+Lissajous. Finalmente guarde la solución en un archivo externo \textit{.txt} 
+con el formato \textit{[tiempo, solución coordenada X, solución coordenada Y]}.
+
+
+\
+
+\textbf{BONUS \large{$\pr{\star}$}}
+
+Este ejercicio puede ser considerado de dos estrellas si se realiza lo 
+siguiente. Otro código que cargue el archivo de datos de la solución 
+obtenida del sistema de la figura \ref{fig:spring_acopled_pendulums} y 
+realice una animación 3D en \mayavi que ilustre la evolución del sistema.
+
+
+
+\newpage
 \subsection*{Ejercicio 5 \large{$\pr{\star \star}$}}
+
+\textbf{Sistema de masas resortes acoplados}
+
+En la siguiente figura se muestra un sistema de 5 masas acopladas a través
+de resortes.
+
+
+%.........................................................................
+%Pendulum-Spring system
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=1.00\textwidth]
+	{./pictures/acopled_mass_spring.png}
+
+	\caption{\small{Sistema de 5 masas acopladas por resortes.}}
+	
+	\label{fig:two_springs}
+\end{figure}
+%.........................................................................
+
+
+Plantee las ecuaciones de movimiento para este sistema y haga un código en 
+el cual se resuelvan numéricamente teniendo en cuenta una fricción con la 
+superficie horizontal. Para esto asuma que todos las masas están inicialmente 
+en reposo y en equilibrio excepto la primera masa de uno de los extremos, la 
+cual comienza con una cierta amplitud respecto a la posición de equilibrio. 
+Usando la función \texttt{savefig} de la librería \matplotlib guarde una 
+gráfica donde se superpongan las soluciones de la amplitud de los péndulos
+respecto al tiempo. Finalmente en el mismo código, realice una animación
+3D usando \mayavi de la evolución de todo el sistema. Asuma las 5 masas $m$ 
+iguales y las constantes de los 6 resortes $k$.
+
+\
+
+Note como la evolución del sistema conlleva a una propagación del movimiento
+de la primera masa hacia las demás, esto permite ilustrar de forma básica el
+concepto de onda.
+
 
 %*************************************************************************
 
