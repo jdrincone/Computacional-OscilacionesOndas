@@ -303,24 +303,25 @@ este código son óptimos para la generación de videos en \python.
 %.........................................................................
 \subsection*{Ejercicio 1 \large{$\pr{\star}$}}
 
-\textbf{Interferencia de 3 fuentes con reflexión}
+\textbf{Fuente puntual con reflexión}
 
-Considere el mismo sistema de la demostración 1, pero con tres fuentes 
-puntuales. 
-%Mass-Spring system
+Considere el mismo sistema de la demostración 1, pero con una fuente puntual. 
+%Reflection
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.60\textwidth]
 	{./pictures/interference_reflex.png}
 
-	\caption{\small{Sistema masa resorte.}}
+	\caption{\small{Reflexión en paredes.}}
 	
-	\label{fig:mass_spring}
+	\label{fig:wall_reflection}
 \end{figure}
 
 A partir de este sistema, hacer un código que realice un video donde se
-muestre el patrón de interferencia en el tiempo de las tres fuentes, además
-se debe considerar reflexión en las paredes de la caja. 
+muestre el patrón obtenido en el tiempo debido a la reflexión en las paredes 
+de la caja. 
+
+\
 
 \textit{Hint:} para simular la reflexión de las ondas, puede considerar 
 fuentes ficticias en el exterior de la caja que tengan posiciones simétricas
@@ -331,30 +332,14 @@ respecto a las fuentes originales.
 %.........................................................................
 \subsection*{Ejercicio 2 \large{$\pr{\star}$}}
 
-\textbf{Interferencia de fuentes sonnoras}
+\textbf{Refracción de sonido}
 
-Considere un sistema análogo a la demostración 1, donde el medio es aire y
-las perturbaciones son sonoras. En este caso las ondas son longitudinales,
-pero sigue siendo válido el principio de superposición.
-
-\
-
-Usando la librería \texttt{AudioLib} \footnote{ver ejemplo de uso en 
+Considere una onda sonora monocromática (sinusoidal) que se propaga en el 
+aire, usando la librería \texttt{AudioLib} \footnote{ver ejemplo de uso en 
 demostración 2 del capítulo 3 (Efecto Dopler)} simule el audio que sería 
-percibido por una persona que camina en una habitación cuadrada de lado $L$
-cuando las dos fuentes están prendidas. 
-
-\begin{itemize}
-\item Genere un audio .wav para dos frecuencias armónicas, es decir, que 
-satisfacen una relación entera.
-\item Genere un audio .wav para dos frecuencias no armónicas.
-\end{itemize}
-
-La función de desplazamiento del observador es de libre elección, puede 
-ser un movimiento unidimensional acelerado o a velocidad constante, puede
-ser en dos dimensiones. La única condición es que debe ser a una velocidad 
-promedio para una persona (no comparable a la velocidad del sonido!). 
-Recuerda que se quiere simular una situación físicamente plausible.
+percibido por un observador en el mismo medioo (aire) y otro audio por un
+observador que está sumergido en una piscina (agua). Es decir, simule el 
+cambio que sufre el sonido por refracción en el agua.
 
 \
 
@@ -365,22 +350,116 @@ después de importar la librería y crear un objeto \texttt{audio},
 escribir \texttt{<object\_name>.savewav?}).
 %.........................................................................
 
-
+\newpage
 %.........................................................................
 \subsection*{Ejercicio 3 \large{$\pr{\star}$}}
 
-\textbf{Simulación de difracción}
+\textbf{Simulación de trayectoria de luz en una lente}
 
-%Mass-Spring system
+Considere un conjunto de $N$ rayos de luz que atraviesan una de las lentes
+de la siguiente figura.
+
+%Lens system
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.50\textwidth]
-	{./pictures/diffraction.png}
+	\includegraphics[width=0.30\textwidth]
+	{./pictures/lens.png}
 
-	\caption{\small{Sistema masa resorte.}}
+	\caption{\small{Efecto de una lente en haces de luz.}}
 	
-	\label{fig:mass_spring}
+	\label{fig:lens}
 \end{figure}
+
+Realice un código que grafique (2D) la desviación de los haces de luz para 
+cada uno de los dos casos (El usario del código debería poder escoger cual 
+de los dos lentes usar). Los parámetros físicos son de libre elección, 
+incluyendo el número de haces iniciales y la separación entre ellos. 
+
+\
+
+\textit{Hint:} La forma de los lentes puede omitirse en el gráfico, tan 
+solo se puede ilustrar como una línea recta, o una línea divisoria que
+marque el punto donde los rayos se deflectan.\footnote{Un ejemplo algo más
+complejo que ilustra la trayetoria de haces en lentes puede encontrarse
+en \url{https://raw.github.com/sbustamante/Computacional-OscilacionesOndas/master/codigos/lens.py}}
+
+%.........................................................................
+
+
+\newpage
+%.........................................................................
+\subsection*{Ejercicio 4 \large{$\pr{\star}$}}
+
+\textbf{Refracción de fuente puntual.}
+
+Considere una fuente puntual en un medio con índice de refracción $n_1$ y 
+un medio adyacente con índice $n_2$, de tal forma que la interfaz entre ambos
+medios es plana. 
+
+%Refraction system
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.60\textwidth]
+	{./pictures/difraction.png}
+
+	\caption{\small{Refracción en un medio.}}
+	
+	\label{fig:two_medias}
+\end{figure}
+
+A partir de este sistema, hacer un código que realice un video donde se
+muestre el patrón obtenido en el tiempo debido a la refracción de un medio a
+otro. 
+
+\
+
+\textit{Hint:} para simular la refracción de las ondas, puede considerar 
+una fuente ficticia que produzca el patrón refractado, pero solo evaluarlo
+en el medio 2.
+%.........................................................................
+
+
+
+\newpage
+%.........................................................................
+\subsection*{Ejercicio 5 \large{$\pr{\star \star}$}}
+
+\textbf{Refracción Mecánica}
+
+El fenómeno de refracción puede ser demostrado de manera totalmente mecánica
+y se presenta sistemas como el descrito en la siguiente figura
+
+%Mechanical Refraction
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.60\textwidth]
+	{./pictures/soldiers.png}
+
+	\caption{\small{Refracción mecánica.}}
+	
+	\label{fig:mechanical_refraction}
+\end{figure}
+
+Considere un pelotón de soldados marchando de forma sincronizada, de tal  
+forma que siempre están alineados en frentes. El pelotón tiene una 
+disposición de $N\times M$ soldados. Inicialmente están marchando en 
+un terreno poco agreste (césped) y el pelotón se mueve a una velocidad
+constante $v_0$. Más adelante en el camino, se encuentra un terreno 
+pantanoso por el cual es más difícil transitar y el pelotón se mueve a 
+una velocidad menor $v_1$. Si los soldados entran al terreno pantanoso
+formando un ángulo $\theta$ con la normal de la interfaz de los terrenos.
+Usando solo la condición de mantener los frentes alineados, puede 
+demostrarse que el pelotón cambiará de orientación.
+
+\
+
+Basado en esta situación, realice un código donde se ilustre en una 
+animación 3D este efecto.
+
+\
+
+\textit{Hint:} Por simplicidad, los soldados pueden ser tomados como cubos.
+Puede usar la librería \mayavi o \textit{Vpython}.
 %.........................................................................
 
 %*************************************************************************
