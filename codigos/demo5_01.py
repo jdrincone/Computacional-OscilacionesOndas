@@ -8,7 +8,6 @@ import AudioLib as ad
 import Tkinter
 import matplotlib.pylab as plt
 import numpy as np
-import scipy.interpolate as interp
 
 from matplotlib.backends.backend_tkagg \
 import FigureCanvasTkAgg, NavigationToolbar2TkAgg
